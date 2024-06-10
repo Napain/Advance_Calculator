@@ -1,4 +1,3 @@
-from sympy.plotting import plot 
 from sympy import * 
 
 
@@ -23,7 +22,7 @@ class CheckMethods:
                 self.number = float(self.number)
                 return(self.number)
             except ValueError:
-                self.number = input('input the number')
+                self.number = input('Please input a number')
 
     def check_zero(self):
         if self.check_int() == 0:
@@ -34,7 +33,7 @@ class CheckMethods:
 
     def check_eval(self, box):
 
-        valid_operations = ["1","2","3","4","5","6","7","8","9","+","-","*","/","."]
+        valid_operations = ["0","1","2","3","4","5","6","7","8","9","+","-","*","/",".","%"]
 
         for item in box:
             if item in valid_operations:
@@ -58,7 +57,7 @@ class CheckMethods:
         try :
             
             fct = sympify(self.number)
-            print('----You hace successefully convert your str into a sympy function ----')
+
 
         except :
             print('You enter an invalid syntax. : type -help for list of function')
@@ -66,6 +65,15 @@ class CheckMethods:
             return False
         
         return fct
-        
+    
+    def check_bounds(self):
+
+        if '-oo' in self.number:
+            return '-oo'
+        elif 'oo' in  self.number:
+            return 'oo'
+        else :
+            return False
+    
 
 

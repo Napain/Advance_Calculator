@@ -1,4 +1,6 @@
-from Methods.check_methods import CheckMethods
+import os
+import json
+from Methods.Check_inputs import CheckMethods
 
 
 class MyCalculator (CheckMethods):
@@ -45,20 +47,58 @@ class MyCalculator (CheckMethods):
     
     def long_calculation(self):
 
-        box = input(" PLease enter your long calculation :  ")
-        result = self.check_eval(box) 
-        if result :
-            print(f"The result of {box} = {result}" )
+        print(" To exit or break. Type 'exit' or 'break' ")
+
+        while True :
+                         
+            if os.path.isfile("fct_save.json") and os.access("fct_save.json", os.R_OK):
+
+                with open ("fct_save.json", "r") as f:
+                    previous = json.load(f)
         
-
-# class scientifque_calculator(Pick):
-
-#     def __init__(self):
-#         pass
-
-#     def the_scientific_caculator(self):
-#         self.pick_one()
-
+                print ( previous['previous'], end= '')
+                    
+                next_box = CheckMethods(' ')
+                
+                if 'exit' in next_box.number.lower() or 'break' in next_box.number.lower():
+                    
+                    break
+                
+                next_box.number = previous['previous']  + next_box.number 
+            
+                result = self.check_eval(next_box.number) 
+            
+                if result != False :
+                
+                    results = {"previous" : str(result) }
+                    json_save = json.dumps(results)
+                    with open ("fct_save.json", "w") as f:
+                        f.write(json_save)
+                        
+                elif result == False :
+                    
+                    print('An unexpected error happenned. Please check your input ')
+                    break
+                        
+            else :
+                
+                box = input(" PLease enter your long calculation :  ")
+                result = self.check_eval(box) 
+                
+                if result :
+                    print(f"The result of {box} = {result}" )
+                            
+                    print( result )
+                    results = {"previous" : str(result) }
+                    json_save = json.dumps(results)
+                    with open ("fct_save.json", "w") as f:
+                        f.write(json_save)
+                        
+                else:
+                    
+                    print('An unexpected error happenned. Please check your input ')
+                    break
+        
 
 
             

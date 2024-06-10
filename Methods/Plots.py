@@ -1,4 +1,4 @@
-from Methods.check_methods import CheckMethods
+from Methods.Check_inputs import CheckMethods
 import numpy as np
 from sympy.plotting import plot 
 from sympy import * 
@@ -116,9 +116,9 @@ class Plot(CheckMethods): #Need to check the plot any with plot errors
 
             if yes == True :
 
-                if os.path.isfile("fct_save.json") and os.access("fct_save.json", os.R_OK):
+                if os.path.isfile("fct_plot.json") and os.access("fct_plot.json", os.R_OK):
 
-                    with open ("fct_save.json", "r") as f:
+                    with open ("fct_plot.json", "r") as f:
                         the_fct = json.load(f)
         
                     fct = sympify(the_fct['function'])
@@ -131,8 +131,6 @@ class Plot(CheckMethods): #Need to check the plot any with plot errors
                 
                 else:
                     print('Sorry, it seems there was no previous equation before ')
-
-                    
 
 
                     fct = input('input your equation :  ')
@@ -149,12 +147,13 @@ class Plot(CheckMethods): #Need to check the plot any with plot errors
 
                         return False
                     
+                    x = Symbol('x')
                     dictionary = {"function" : the_fct , "x_min": x_min, "x_max": x_max }
-                    json_save = json.dumps(dictionary)
-                    plot(fct,(fct,x_min,x_max), line_color = 'red')
+                    json_plot = json.dumps(dictionary)
+                    plot(fct,(x,x_min,x_max), line_color = 'red')
                     
-                    with open ("fct_save.json", "w") as f:
-                        f.write(json_save)
+                    with open ("fct_plot.json", "w") as f:
+                        f.write(json_plot)
 
             if yes == False:
 
@@ -170,13 +169,21 @@ class Plot(CheckMethods): #Need to check the plot any with plot errors
                 dictionary = {"function" : function , "x_min": x_min, "x_max": x_max }
                 json_save = json.dumps(dictionary)
                 x = symbols('x') 
-                plot(equation,(x,x_min,x_max), line_color = 'red')
+                try:
+                    plot(equation,(x,x_min,x_max), line_color = 'red')
+
+                    status = True 
                     
-                with open ("fct_save.json", "w") as f:
+                    
+                except:
+                    print('Something went wrong. You must have inputed a wrong function. Type -help to display a list of function ')
+                    print('---------------The function will not be save----------')
+                if status == True:
+                     with open ("fct_plot.json", "w") as f:
                         f.write(json_save)
 
-
         else: 
+            
             checking = CheckMethods('Input your equation : ')
             equation = checking.check_sympy_equation()
             function = str(equation)
