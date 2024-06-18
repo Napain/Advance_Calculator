@@ -1,6 +1,6 @@
-from Utility.UI import ScientificUI
-from Utility import main_menu
-from Methods.Calculator import MyCalculator
+from utility.ui import ScientificUI
+from utility.ui import main_menu
+from methods.calculator import MyCalculator
 
  
 First_Object = MyCalculator()

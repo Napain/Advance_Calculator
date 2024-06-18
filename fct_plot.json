@@ -1,1 +1,1 @@
-{"function": "-sin(x)", "x_min": -10.0, "x_max": 10.0}
+{"function": "sqrt(2)*sqrt(pi)*exp(-(x - 100)**2/2)/2", "x_min": 80.0, "x_max": 150.0}

@@ -1,5 +1,51 @@
-from Methods.Plots import Plot
-from Methods.Calculus import Calculus
+from methods.plots import Plot
+from methods.calculus import Calculus
+
+def main_menu(My_calculator, Scientific):
+
+        while True :
+
+            print ('\n ------------- Welcome to the simple calculator  -------------')
+            print ('----- 1 : Summe ---------')
+            print ('----- 2 : Substract ---------')
+            print ('----- 3 : Multiple ---------')
+            print ('----- 4 : Divide  ---------')
+            print ('----- 5 : Long Calculation ---------')
+            print ('----- 6 : Enter Scientific Calculator ---------')
+            print ('----- 7 : Exit ---------')
+
+
+            user = input('------Chose your operation here : ')
+
+
+            if user == '1':
+                My_calculator.add()
+
+            elif user == '2' :
+                My_calculator.substract()
+
+            elif user == '3' :
+                My_calculator.multilpy()
+
+            elif user == '4' :
+
+                My_calculator.divide()
+            
+            elif user == '5':
+                My_calculator.long_calculation()
+                
+            elif user == '6':
+                Scientific.pick_one()
+
+            elif user == '7' or user.lower() == 'exit':
+                break
+            elif user == '-help':
+                print("valid numbers {1,2,3,4,5,6,7}\n") 
+                print("syntax for function : \n- sin(x)\n- cos(x)\n- exp(x)\n- ln(x)\n- ** = ^ ")
+                print("\n save method only save your last equation!")
+            else : 
+                print("Please enter a valid input ")
+
 
 
 class PLotUI(Plot):
@@ -48,10 +94,6 @@ class PLotUI(Plot):
                 print("valid numbers {1,2,3,4,5,6,7}\n") 
                 print("syntax for function : \n- sin(x)\n- cos(x)\n- exp(x)\n- ln(x)\n- ** = ^ ")
                 print("\n save method only save your last equation!")
-
-            # elif user == '-save':
-            #     self.any_plot(save=True)
-            #     continue
             else:
                 print("Please enter a valid number {1,2,3,4,5,6,7,8,9} or -help for more info")
 
@@ -66,37 +108,31 @@ class CalculusUI(Calculus):
             print ('\n ------------- Choose your plot!  -------------')
             print ('\n ------------- To save your equation, type -save and -unsave to erase -------------')
             print ('----- 1 : First Derivative ---------')
-            print ('----- 2 : Integral  ---------')
-            print ('----- 3 : Cos(x) ---------')
-            print ('----- 4 : e^(x) ---------')
-            print ('----- 5 : Exit ---------')
+            print ('----- 2 : Integral without Bounds  ---------')
+            print ('----- 3 : Integral with Bounds ---------')
+            print ('----- 4 : Solve Cuadratic equation ---------')
+            print ('----- 5 : Solve and Save last solution  ---------')
+            print ('----- 6 : Exit ---------')
 
             user = input('------Chose your operation here : ')
 
             if user == '1':
                 self.derivative()
             elif user == '2':
-                self.Integrals(definitive=True)
+                self.Integrals()
                 
             elif user == '3':
-                print('Note done yet We are sorry')
-                print (' -------------------------------------------- \n')
-                break
+                self.Integrals(definitive=True)
             elif user == '4':
-                print('Note done yet We are sorry')
-                print (' -------------------------------------------- \n')
+                self.solve_quadratic()
+            elif user == '5':
+                self.solve_quadratic(saves=True)
+            elif user == '6' or user.lower() == 'exit':
                 break
-            elif user == '5' or user.lower() == 'exit':
-                break
-
             elif user == '-help':
                 print("valid numbers {1,2,3,4,5,6,7}\n") 
                 print("syntax for function : \n- sin(x)\n- cos(x)\n- exp(x)\n- ln(x)\n- ** = ^ ")
                 print("\n save method only save your last equation!")
-
-            # elif user == '-save':
-            #     self.any_plot(save=True)
-            #     continue
             else:
                 print("Please enter a valid number {1,2,3,4,5,6,7,8,9} or -help for more info")
 
