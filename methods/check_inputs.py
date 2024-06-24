@@ -69,14 +69,5 @@ class CheckMethods:
         
         return fct
     
-    def _check_bounds(self):
-
-        if '-oo' in self.number:
-            return '-oo'
-        elif 'oo' in  self.number:
-            return 'oo'
-        else :
-            return False
-    
 
 
