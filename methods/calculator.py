@@ -3,7 +3,7 @@ import json
 from methods.check_inputs import CheckMethods
 
 
-class MyCalculator (CheckMethods):
+class MyCalculator (CheckMethods): #The foundation of the project. The 5 initial methods for the calculator to function. 
 
     def __init__(self) :
         pass

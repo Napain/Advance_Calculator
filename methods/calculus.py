@@ -3,7 +3,7 @@ import json
 import os
 from sympy import * 
 
-class Calculus(CheckMethods):
+class Calculus(CheckMethods): #The logic class necesary for solving easy calculus questions. 
 
     def __init__(self):
         pass

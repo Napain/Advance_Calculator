@@ -1,7 +1,7 @@
 from methods.plots import Plot
 from methods.calculus import Calculus
 
-def main_menu(My_calculator, Scientific):
+def main_menu(My_calculator, Scientific): # This function is the primary UI. It is a function since I ran into many troubles making it a class and circular imports. 
 
         while True :
 
@@ -46,9 +46,9 @@ def main_menu(My_calculator, Scientific):
             else : 
                 print("Please enter a valid input ")
 
+#Also I could and will create modules for PLotUI and CalculusUI classes. Since they work independetly from one another. 
 
-
-class PLotUI(Plot):
+class PLotUI(Plot): #UI that calls the logic in the plot module.
 
     def __init__(self):
         pass
@@ -97,7 +97,7 @@ class PLotUI(Plot):
             else:
                 print("Please enter a valid number {1,2,3,4,5,6,7,8,9} or -help for more info")
 
-class CalculusUI(Calculus):
+class CalculusUI(Calculus): #Calculus UI that call and use the logic from the calculus module.
 
     def __init__(self):
         pass
@@ -136,7 +136,7 @@ class CalculusUI(Calculus):
             else:
                 print("Please enter a valid number {1,2,3,4,5,6,7,8,9} or -help for more info")
 
-class ScientificUI(CalculusUI, PLotUI):
+class ScientificUI(CalculusUI, PLotUI): #A simple UI to redirect the user to the more advance part of the calculator.
             
     def __init__(self):
          pass

@@ -1,7 +1,7 @@
 from sympy import * 
 
 
-class CheckMethods:
+class CheckMethods: #Here you'll find the logic that use the program to make sure the user is not wrong using or giving any input. 
 
     def __init__(self, the_string):
 

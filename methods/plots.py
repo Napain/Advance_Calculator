@@ -5,7 +5,7 @@ from sympy import *
 import json
 import os
 
-class Plot(CheckMethods): #Need to check the plot any with plot errors
+class Plot(CheckMethods): #This class is all the logic necesary to plot the functions and save them.
 
     def __init__(self):
         pass
@@ -121,7 +121,7 @@ class Plot(CheckMethods): #Need to check the plot any with plot errors
                     with open ("fct_plot.json", "r") as f:
                         the_fct = json.load(f)
                         print(the_fct, the_fct['function'])
-                    print(f'The previous function was {the_fct['function']} -------\n')
+                    print(f"The previous function was {the_fct['function']} -------\n")
                     fct = sympify(the_fct['function'])
                     x_min = the_fct['x_min']
                     x_max = the_fct['x_max']
@@ -193,15 +193,5 @@ class Plot(CheckMethods): #Need to check the plot any with plot errors
                 x_min, x_max = self.linspace()
                 x = symbols('x') 
                 plot(equation,(x,x_min,x_max), line_color = 'red')
-                # try :
 
-            #     fct = sympify(fct)
-
-            # except :
-
-            #     print('You enter an invalid syntax. : type -help for list of function')
-
-            #     return False
-             
-            # plot(fct, line_color = 'red')
 
